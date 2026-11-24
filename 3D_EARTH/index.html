@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3D 지구 지형</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="page-header">
+    <div>
+      <h1>3D 지구 지형</h1>
+      <p>NOAA ETOPO 2022 · 0.5° 표본 격자</p>
+    </div>
+    <button id="capture" disabled>지구 화면 PNG 저장</button>
+  </header>
+  <main>
+    <section class="viewport" aria-label="3D 지구 렌더링 화면">
+      <canvas id="earth" aria-label=""></canvas>
+      <p id="status" role="status">전 세계 고도 격자를 불러오는 중…</p>
+    </section>
+    <section class="controls" aria-label="지구와 조명 조작">
+      <fieldset id="settings" disabled>
+        <legend>지구 모형 조작</legend>
+        <div class="control">
+          <label for="rotation">자전 각도 <output id="rotation-value" for="rotation">0°</output></label>
+          <input id="rotation" type="range" min="0" max="359" step="1" value="0">
+          <label class="toggle"><input id="auto-rotate" type="checkbox" checked> 자동 자전</label>
+        </div>
+        <div class="control">
+          <label for="light">광원 방향 <output id="light-value" for="light">−35°</output></label>
+          <input id="light" type="range" min="-90" max="90" step="1" value="-35">
+          <label class="toggle"><input id="auto-light" type="checkbox"> 광원 자동 이동</label>
+        </div>
+        <div class="control">
+          <label for="exaggeration">고도 과장 <output id="exaggeration-value" for="exaggeration">28배</output></label>
+          <input id="exaggeration" type="range" min="0" max="42" step="1" value="28">
+          <button id="reset" type="button">카메라와 설정 초기화</button>
+        </div>
+      </fieldset>
+      <p class="hint"></p>
+    </section>
+  </main>
+  <footer><a href="https://www.ncei.noaa.gov/products/etopo-global-relief-model">고도 자료 · NOAA NCEI ETOPO 2022</a></footer>
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
